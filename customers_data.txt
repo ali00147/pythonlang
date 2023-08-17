@@ -1,0 +1,12 @@
+User Account:
+Username: masla2
+Password: asdfsadf@
+Customer Profile:
+Name: Maslah
+Age: 78
+Address: 1500 East Street
+City: columbus
+State: OH
+Email: mas@gmail.com
+Phone: 65456446
+--------------------

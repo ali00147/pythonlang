@@ -50,18 +50,19 @@ def storing_customers_info():
         customers.append((user_name, password, customer_profile))
 
         user_response = input("Would you like to continue entering data? (yes/no): ")
-        if (user_response.lower() == "no") or (user_response.upper()) or (user_response=="n") or (user_response=="N"):
+        if (user_response.lower() == "no") or (user_response.upper()=="NO") or (user_response=="n") or (user_response=="N"):
             print("Thank you, see you soon!")
             break
 
-    for user_name, password, customer in customers:
-        print("User Account:")
-        print(f'Username: {user_name}\nPassword: {password}')
-        for key, value in customer.items():
-            print(f"{key}: {value}")
-        print("-" * 20)
+    with open("customers_data.txt", "w") as file:
+        for user_name, password, customer in customers:
+            file.write("User Account:\n")
+            file.write(f'Username: {user_name}\nPassword: {password}\n')
+            file.write("Customer Profile:\n")
+            for key, value in customer.items():
+                file.write(f"{key}: {value}\n")
+            file.write("-" * 20 + "\n")
 
     return customers
-
 if __name__ == "__main__":
     storing_customers_info()
