@@ -1,13 +1,3 @@
-
-profile={"name":"NA","age":"NA",
-                      "address":"NA","email":"NA","phone":"NA"}
-userinput={"name":"Maslah","age":15,
-               "address":"Ohio","email":"mas@gmail.com",
-            "phone":"666-668-2555"}
-
-profile|=userinput
-print(profile)
-    
 def create_user_account():
     uniqueChars = "$%&*@!.,|:"
     numbers = "123456789"
@@ -38,16 +28,16 @@ def create_user_account():
 
         break
 
-    saveusername = [user_name]
-    savepassword = [password]
     print("Success, you have created your account.")
 
-    print(f' your user name is {saveusername}and your password is {savepassword}')
-    return saveusername, savepassword
+    return user_name, password
+
 def storing_customers_info():
     customers = []
 
     while True:
+        user_name, password = create_user_account()
+
         customer_profile = {}
         customer_profile["Name"] = input("Enter your Name:\n")
         customer_profile["Age"] = int(input("Enter your Age:\n"))
@@ -56,16 +46,17 @@ def storing_customers_info():
         customer_profile["State"] = input("Enter The State:\n")
         customer_profile["Email"] = input("Enter your Email Address:\n")
         customer_profile["Phone"] = input("Enter your Phone number:\n")
-
-        customers.append(customer_profile)
+        
+        customers.append((user_name, password, customer_profile))
 
         user_response = input("Would you like to continue entering data? (yes/no): ")
-        if user_response.lower() == "no":
+        if (user_response.lower() == "no") or (user_response.upper()) or (user_response=="n") or (user_response=="N"):
             print("Thank you, see you soon!")
             break
 
-    for customer in customers:
-        print("Customer Profile:")
+    for user_name, password, customer in customers:
+        print("User Account:")
+        print(f'Username: {user_name}\nPassword: {password}')
         for key, value in customer.items():
             print(f"{key}: {value}")
         print("-" * 20)
@@ -73,5 +64,4 @@ def storing_customers_info():
     return customers
 
 if __name__ == "__main__":
-    #storing_customers_info()
-    create_user_account()
+    storing_customers_info()
