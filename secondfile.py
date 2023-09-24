@@ -1,4 +1,19 @@
-def repeatednumbers(array):
+def finding_dublicates_indices():
+    given_array = [1, 2, 5, 6, 47, 8, 9, 4, 4, 47,5,5]
+    result = []
+
+    for i in range(len(given_array)):
+        for j in range(i + 1, len(given_array)):
+            if given_array[i] == given_array[j]:
+                result.append((given_array[i], i, j))
+
+    for value, index1, index2 in result:
+      print(f"Value {value} found at postions {index1} and {index2} .")
+        #saveresult={}
+        #saveresult.append(value, )
+
+
+def repeated_numbers(array):
     result=[]
     result1=[]
     for n,i in enumerate(array):
@@ -17,7 +32,7 @@ def repeatednumbers(array):
 if __name__=="__main__":
 
     list1= [1,2,3,565,4,6,8,565,8,1,4]
-    x=repeatednumbers(list1)
+    x=repeated_numbers(list1)
     
 
     print("The maximum value within the provided list is.:",max(list1),
